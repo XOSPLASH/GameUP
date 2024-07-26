@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+#app {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#coins {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#task-input {
+    margin-bottom: 20px;
+}
+
+#task-input input {
+    padding: 10px;
+    width: calc(100% - 120px);
+    margin-right: 10px;
+}
+
+#task-input button {
+    padding: 10px;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
+#task-list li {
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#task-list li.completed {
+    text-decoration: line-through;
+    background-color: #d4edda;
+}
+
+#shop {
+    margin-top: 20px;
+}
+
+#shop #shop-button {
+    background-color: #007bff;
+    font-size: large;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+#shop .item {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#shop .item:hover {
+    background-color: #0056b3;
+}
