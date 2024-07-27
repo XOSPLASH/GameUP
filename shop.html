@@ -3,25 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameUP - Shop</title>
+    <title>Shop</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="shop-page">
         <h1>Shop</h1>
-        <div id="coins">
-            Coins: <span id="coin-count">0</span>
-        </div>
-
+        <div id="coins">Coins: 0</div>
         <div id="shop">
-            <div class="item" onclick="buyItem('Skibidi Toilet', 10)">Skibidi Toilet - 10 Coins</div>
-            <div class="item" onclick="buyItem('Sigma Meal', 20)">Sigma Meal - 20 Coins</div>
-            <div class="item" onclick="buyItem('Ohio', 30)">Ohio - 30 Coins</div>
+            <!-- Example items -->
+            <div class="item" onclick="buyItem('Rizz Box', 10)">Rizz box - 10 coins</div>
+            <div class="item" onclick="buyItem('Item 2', 20)">Item 2 - 20 coins</div>
         </div>
-
-        <button id="back-to-app" onclick="navigateTo('index.html')">Back to App</button>
+        <button onclick="navigateTo('index.html')">Home</button>
+        <button onclick="navigateTo('inventory.html')">Inventory</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
