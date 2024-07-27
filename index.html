@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game-UP</title>
+    <title>GameUP</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <div id="app">
-        <h1>Game-UP: Productivity App</h1>
+        <h1>Productivity App</h1>
 
         <div id="coins">
             Coins: <span id="coin-count">0</span>
@@ -24,12 +23,8 @@
             <!-- Task items will appear here -->
         </ul>
 
-        <h2>Shop</h2>
-        <div id="shop">
-            <div class="item" onclick="buyItem('Reward 1', 10)">Reward 1 - 10 Coins</div>
-            <div class="item" onclick="buyItem('Reward 2', 20)">Reward 2 - 20 Coins</div>
-            <div class="item" onclick="buyItem('Reward 3', 30)">Reward 3 - 30 Coins</div>
-        </div>
+        <button id="view-shop" onclick="navigateTo('shop.html')">View Shop</button>
+        <button id="reset-tasks" onclick="resetTasks()">Reset tasks</button>
     </div>
 
     <script src="script.js"></script>
