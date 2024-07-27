@@ -91,8 +91,38 @@ function loadCoins() {
     updateCoinCount();
 }
 
+function navigateTo(url) {
+    window.location.href = url;
+}
+
+function resetTasks() {
+    // Clear the task list in the DOM
+    const taskList = document.getElementById('task-list');
+    taskList.innerHTML = '';
+
+    // Remove the saved tasks from localStorage
+    localStorage.removeItem('tasks');
+}
+
 // Initialize coin count and tasks on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadCoins();
-    loadTasks();
+    if (document.getElementById('task-list')) {
+        loadTasks();
+    }
+
+    // Add event listener for Enter key press on the task input
+    const taskInput = document.getElementById('new-task');
+    taskInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            addTask();
+        }
+    });
+
+    // Add event listener for Ctrl + Backspace key press to reset tasks
+    document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.key === 'Backspace') {
+            resetTasks();
+        }
+    });
 });
