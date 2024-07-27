@@ -1,128 +1,155 @@
-let coins = 0;
+// JavaScript for handling tasks, coins, and inventory
 
-function updateCoinCount() {
-    document.getElementById('coin-count').textContent = coins;
-    localStorage.setItem('coins', coins);
+// Clear the inventory
+function clearInventory() {
+    localStorage.removeItem('inventory');
+    loadInventory(); // Refresh the inventory display
 }
 
+// Load coins from localStorage
+function loadCoins() {
+    const coins = localStorage.getItem('coins');
+    document.getElementById('coins').innerText = `Coins: ${coins || 0}`;
+}
+
+// Save coins to localStorage
+function saveCoins(coins) {
+    localStorage.setItem('coins', coins);
+    document.getElementById('coins').innerText = `Coins: ${coins}`;
+}
+
+// Update coins by a certain amount
+function updateCoins(amount) {
+    let coins = parseInt(localStorage.getItem('coins')) || 0;
+    coins += amount;
+    saveCoins(coins);
+}
+
+// Add a task
 function addTask() {
     const taskInput = document.getElementById('new-task');
     const taskText = taskInput.value.trim();
-    
-    if (taskText === '') return;
-
-    const taskList = document.getElementById('task-list');
-    const newTask = document.createElement('li');
-    newTask.textContent = taskText;
-
-    const completeButton = document.createElement('button');
-    completeButton.textContent = 'Complete';
-    completeButton.onclick = function() {
-        completeTask(newTask);
-    };
-
-    newTask.appendChild(completeButton);
-    taskList.appendChild(newTask);
-
-    taskInput.value = '';
-    saveTasks();
-}
-
-function completeTask(taskElement) {
-    if (!taskElement.classList.contains('completed')) {
-        taskElement.classList.add('completed');
-        coins += 10; // Award 10 coins for each completed task
-        updateCoinCount();
+    if (taskText) {
+        const taskList = document.getElementById('task-list');
+        const taskItem = document.createElement('li');
+        taskItem.innerHTML = `
+            ${taskText}
+            <button onclick="completeTask(this)">Complete</button>
+        `;
+        taskList.appendChild(taskItem);
+        taskInput.value = '';
         saveTasks();
     }
 }
 
-function buyItem(item, cost) {
-    if (coins >= cost) {
-        coins -= cost;
-        updateCoinCount();
-        alert(`You bought ${item} for ${cost} coins!`);
-    } else {
-        alert(`You need ${cost} coins to buy ${item}.`);
-    }
+// Complete a task
+function completeTask(button) {
+    const taskItem = button.parentElement;
+    taskItem.classList.add('completed');
+    button.disabled = true; // Disable the button to prevent re-completion
+    updateCoins(10); // Increase coins by 10 for each completed task
+    saveTasks();
 }
 
+// Save tasks to localStorage
 function saveTasks() {
-    const tasks = [];
-    document.querySelectorAll('#task-list li').forEach(task => {
-        tasks.push({
-            text: task.firstChild.textContent,
-            completed: task.classList.contains('completed')
-        });
-    });
+    const tasks = Array.from(document.getElementById('task-list').children).map(taskItem => ({
+        text: taskItem.childNodes[0].textContent,
+        completed: taskItem.classList.contains('completed')
+    }));
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+// Load tasks from localStorage
 function loadTasks() {
-    const savedTasks = localStorage.getItem('tasks');
-    if (savedTasks) {
-        const tasks = JSON.parse(savedTasks);
-        const taskList = document.getElementById('task-list');
-        tasks.forEach(task => {
-            const newTask = document.createElement('li');
-            newTask.textContent = task.text;
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const taskList = document.getElementById('task-list');
+    taskList.innerHTML = '';
+    tasks.forEach(task => {
+        const taskItem = document.createElement('li');
+        taskItem.innerHTML = `
+            ${task.text}
+            <button onclick="completeTask(this)" ${task.completed ? 'disabled' : ''}>Complete</button>
+        `;
+        if (task.completed) {
+            taskItem.classList.add('completed');
+        }
+        taskList.appendChild(taskItem);
+    });
+}
 
-            const completeButton = document.createElement('button');
-            completeButton.textContent = 'Complete';
-            completeButton.onclick = function() {
-                completeTask(newTask);
-            };
+// Save purchased items to localStorage
+function saveInventory(items) {
+    localStorage.setItem('inventory', JSON.stringify(items));
+}
 
-            newTask.appendChild(completeButton);
-            if (task.completed) {
-                newTask.classList.add('completed');
-            }
+// Load purchased items from localStorage
+function loadInventory() {
+    const inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+    const inventoryList = document.getElementById('inventory-list');
+    inventoryList.innerHTML = '';
+    inventory.forEach(item => {
+        const itemElement = document.createElement('li');
+        itemElement.textContent = item;
+        itemElement.classList.add('inventory-item');
+        inventoryList.appendChild(itemElement);
+    });
+}
 
-            taskList.appendChild(newTask);
-        });
+// Add item to inventory
+function addToInventory(item) {
+    const inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+    inventory.push(item);
+    saveInventory(inventory);
+}
+
+// Buy item function
+function buyItem(itemName, itemCost) {
+    let coins = parseInt(localStorage.getItem('coins')) || 0;
+    if (coins >= itemCost) {
+        coins -= itemCost;
+        saveCoins(coins);
+        addToInventory(itemName);
+        alert(`You have successfully bought ${itemName}!`);
+        loadInventory(); // Update inventory display
+    } else {
+        alert('Not enough coins to buy this item.');
     }
 }
 
-function loadCoins() {
-    const savedCoins = localStorage.getItem('coins');
-    if (savedCoins) {
-        coins = parseInt(savedCoins, 10);
-    }
-    updateCoinCount();
+// Reset tasks
+function resetTasks() {
+    document.getElementById('task-list').innerHTML = '';
+    saveTasks();
+    localStorage.removeItem('tasks');
 }
 
+// Navigate to another page
 function navigateTo(url) {
     window.location.href = url;
 }
 
-function resetTasks() {
-    // Clear the task list in the DOM
-    const taskList = document.getElementById('task-list');
-    taskList.innerHTML = '';
-
-    // Remove the saved tasks from localStorage
-    localStorage.removeItem('tasks');
-}
-
-// Initialize coin count and tasks on page load
-document.addEventListener('DOMContentLoaded', () => {
-    loadCoins();
-    if (document.getElementById('task-list')) {
+// Initial setup for app and shop pages
+window.addEventListener('load', () => {
+    if (document.getElementById('coins')) {
+        loadCoins();
         loadTasks();
+        
+        // Add event listener for Enter key press on the task input
+        const taskInput = document.getElementById('new-task');
+        taskInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Add event listener for Ctrl + Backspace key press to reset tasks
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.key === 'Backspace') {
+                resetTasks();
+            }
+        });
+    } else if (document.getElementById('inventory-list')) {
+        loadInventory();
     }
-
-    // Add event listener for Enter key press on the task input
-    const taskInput = document.getElementById('new-task');
-    taskInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            addTask();
-        }
-    });
-
-    // Add event listener for Ctrl + Backspace key press to reset tasks
-    document.addEventListener('keydown', function(event) {
-        if (event.ctrlKey && event.key === 'Backspace') {
-            resetTasks();
-        }
-    });
 });
