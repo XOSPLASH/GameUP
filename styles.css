@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -9,7 +10,7 @@ body {
     animation: color 12s ease-in-out infinite;
 }
 
-#app, #shop-page {
+#app, #shop-page, #inventory-page {
     max-width: 600px;
     margin: 0 auto;
     background-color: #fff;
@@ -83,6 +84,22 @@ body {
     background-color: #0056b3;
 }
 
+#inventory-list {
+    list-style: none;
+    padding: 0;
+}
+
+#inventory-list li {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+
 button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -98,11 +115,18 @@ button:hover {
     background-color: #0056b3;
 }
 
-#button:active {
+button:active {
     transform: scale(0.98);
 }
 
 #app #reset-tasks:hover {
     background-color: rgb(210, 12, 12);
-    transition: background-color 1;
+    transition: background-color 1s;
+}
+
+/* Animation for background */
+@keyframes color {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
 }
