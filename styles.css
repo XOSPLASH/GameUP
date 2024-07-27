@@ -4,9 +4,12 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
+    background: linear-gradient(45deg, rgb(224, 16, 16), rgb(208, 10, 188), rgb(244, 132, 4));
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
 }
 
-#app {
+#app, #shop-page {
     max-width: 600px;
     margin: 0 auto;
     background-color: #fff;
@@ -44,7 +47,7 @@ body {
     background-color: #eee;
     padding: 10px;
     margin: 5px 0;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,29 +59,50 @@ body {
 }
 
 #shop {
-    margin-top: 20px;
-}
-
-#shop #shop-button {
-    background-color: #007bff;
-    font-size: large;
-    color: #fff;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    cursor: pointer;
-    border: none;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #shop .item {
     background-color: #007bff;
     color: #fff;
-    padding: 10px;
+    padding: 15px 20px;
     margin: 5px 0;
     border-radius: 5px;
     cursor: pointer;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.2s;
 }
 
 #shop .item:hover {
     background-color: #0056b3;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#button:active {
+    transform: scale(0.98);
+}
+
+#app #reset-tasks:hover {
+    background-color: rgb(210, 12, 12);
+    transition: background-color 1;
 }
