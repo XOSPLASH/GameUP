@@ -3,30 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameUP</title>
+    <title>GameUP - Home</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="app">
-        <h1>Productivity App</h1>
-
-        <div id="coins">
-            Coins: <span id="coin-count">0</span>
-        </div>
-
+        <h1>Do some tasks</h1>
+        <div id="coins">Coins: 0</div>
         <div id="task-input">
-            <input type="text" id="new-task" placeholder="Add a new task...">
+            <input type="text" id="new-task" placeholder="Add a new task">
             <button onclick="addTask()">Add Task</button>
         </div>
-
-        <ul id="task-list">
-            <!-- Task items will appear here -->
-        </ul>
-
-        <button id="view-shop" onclick="navigateTo('shop.html')">View Shop</button>
-        <button id="reset-tasks" onclick="resetTasks()">Reset tasks</button>
+        <ul id="task-list"></ul>
+        <button id="reset-tasks" onclick="resetTasks()">Reset Tasks</button>
+        <button onclick="navigateTo('shop.html')">Shop</button>
+        <button onclick="navigateTo('inventory.html')">Inventory</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
