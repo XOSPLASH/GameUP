@@ -31,7 +31,7 @@ body {
 
 #task-input input {
     padding: 10px;
-    width: calc(100% - 140px);
+    width: calc(100% - 150px);
     margin-right: 10px;
 }
 
@@ -42,6 +42,16 @@ body {
 
 #task-input button {
     padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#task-input button:hover {
+    background-color: #0056b3;
 }
 
 #task-list {
@@ -57,11 +67,31 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    font-size: 16px;
 }
 
 #task-list li.completed {
-    text-decoration: line-through;
     background-color: #d4edda;
+    text-decoration: line-through;
+}
+
+#task-list li.easy {
+    border-left: 5px solid #28a745; /* Green */
+}
+
+#task-list li.medium {
+    border-left: 5px solid #ffc107; /* Yellow */
+}
+
+#task-list li.hard {
+    border-left: 5px solid #dc3545; /* Red */
+}
+
+.timer {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
 #shop, #inventory-list {
