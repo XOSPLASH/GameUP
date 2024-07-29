@@ -31,7 +31,12 @@ body {
 
 #task-input input {
     padding: 10px;
-    width: calc(100% - 120px);
+    width: calc(100% - 140px);
+    margin-right: 10px;
+}
+
+#task-input select {
+    padding: 10px;
     margin-right: 10px;
 }
 
@@ -59,14 +64,14 @@ body {
     background-color: #d4edda;
 }
 
-#shop {
+#shop, #inventory-list {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#shop .item {
+#shop .item, #inventory-list .item {
     background-color: #007bff;
     color: #fff;
     padding: 15px 20px;
@@ -77,27 +82,21 @@ body {
     max-width: 400px;
     text-align: center;
     font-size: 18px;
-    transition: background-color 0.2s;
-}
-
-#shop .item:hover {
-    background-color: #0056b3;
-}
-
-#inventory-list {
-    list-style: none;
-    padding: 0;
-}
-
-#inventory-list li {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 10px;
+    transition: background-color 0.2s, transform 0.2s;
     display: flex;
-    justify-content: center;
-    font-size: 18px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#shop .item:hover, #inventory-list .item:hover {
+    background-color: #0056b3;
+    transform: scale(1.02);
+}
+
+.item-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
 
 button {
@@ -121,7 +120,12 @@ button:active {
 
 #app #reset-tasks:hover {
     background-color: rgb(210, 12, 12);
-    transition: background-color 1s;
+    transition: background-color 0.4s;
+}
+
+#clear-inventory:hover {
+    background-color: red;
+    transition: background-color 0.2s;
 }
 
 /* Animation for background */
