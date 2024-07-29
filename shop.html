@@ -12,8 +12,12 @@
         <div id="coins">Coins: 0</div>
         <div id="shop">
             <!-- Example items -->
-            <div class="item" onclick="buyItem('Wood', 10)">Wood - 10 coins</div>
-            <div class="item" onclick="buyItem('Berry', 5)">Berry - 10 coins</div>
+            <div class="item" onclick="buyItem('Berry', 5, 'berry-icon.png')">
+                <img src="berry-icon.png" alt="Berry Icon" class="item-icon"> Berry - 5 coins
+            </div>
+            <div class="item" onclick="buyItem('Wood', 10, 'wood-icon.png')">
+                <img src="wood-icon.png" alt="Wood Icon" class="item-icon"> Wood - 10 coins
+            </div>
         </div>
         <button onclick="navigateTo('index.html')">Home</button>
         <button onclick="navigateTo('inventory.html')">Inventory</button>
