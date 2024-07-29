@@ -27,17 +27,24 @@ body {
 
 #task-input {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #task-input input {
     padding: 10px;
-    width: calc(100% - 150px);
+    width: calc(100% - 120px);
     margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #task-input select {
     padding: 10px;
-    margin-right: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #task-input button {
@@ -47,7 +54,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
 }
 
 #task-input button:hover {
@@ -67,13 +74,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    font-size: 16px;
 }
 
 #task-list li.completed {
-    background-color: #d4edda;
     text-decoration: line-through;
+    background-color: #d4edda;
 }
 
 #task-list li.easy {
@@ -86,12 +91,6 @@ body {
 
 #task-list li.hard {
     border-left: 5px solid #dc3545; /* Red */
-}
-
-.timer {
-    font-size: 14px;
-    font-weight: bold;
-    margin-left: 10px;
 }
 
 #shop, #inventory-list {
@@ -107,29 +106,25 @@ body {
     padding: 15px 20px;
     margin: 5px 0;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
     cursor: pointer;
     width: 80%;
     max-width: 400px;
-    text-align: center;
     font-size: 18px;
-    transition: background-color 0.2s, transform 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    transition: background-color 0.2s ease;
 }
 
 #shop .item:hover, #inventory-list .item:hover {
     background-color: #0056b3;
-    transform: scale(1.02);
 }
 
-.item-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+#inventory-list .item {
+    background-color: #007bff;
+    color: #fff;
 }
 
-button {
+#app button {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #007bff;
@@ -140,22 +135,17 @@ button {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
+#app button:hover {
     background-color: #0056b3;
 }
 
-button:active {
+#app button:active {
     transform: scale(0.98);
 }
 
-#app #reset-tasks:hover {
+#app #reset-tasks:hover, #app #clear-inventory:hover {
     background-color: rgb(210, 12, 12);
-    transition: background-color 0.4s;
-}
-
-#clear-inventory:hover {
-    background-color: red;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s ease;
 }
 
 /* Animation for background */
