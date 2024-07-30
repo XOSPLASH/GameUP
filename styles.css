@@ -1,13 +1,12 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
     margin: 0;
     padding: 20px;
     background: linear-gradient(45deg, rgb(224, 16, 16), rgb(208, 10, 188), rgb(244, 132, 4));
     background-size: 300% 300%;
     animation: color 12s ease-in-out infinite;
+    color: #333;
 }
 
 #app, #shop-page, #inventory-page {
@@ -20,132 +19,22 @@ body {
     text-align: center;
 }
 
-#coins {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-#task-input {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#task-input input {
-    padding: 10px;
-    width: calc(100% - 120px);
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#task-input select {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#task-input button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-#task-input button:hover {
-    background-color: #0056b3;
-}
-
-#task-list {
-    list-style: none;
-    padding: 0;
-}
-
-#task-list li {
-    background-color: #eee;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#task-list li.completed {
-    text-decoration: line-through;
-    background-color: #d4edda;
-}
-
-#task-list li.easy {
-    border-left: 5px solid #28a745; /* Green */
-}
-
-#task-list li.medium {
-    border-left: 5px solid #ffc107; /* Yellow */
-}
-
-#task-list li.hard {
-    border-left: 5px solid #dc3545; /* Red */
-}
-
-#shop, #inventory-list {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#shop .item, #inventory-list .item {
-    background-color: #007bff;
-    color: #fff;
-    padding: 15px 20px;
-    margin: 5px 0;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    width: 80%;
-    max-width: 400px;
-    font-size: 18px;
-    transition: background-color 0.2s ease;
-}
-
-#shop .item:hover, #inventory-list .item:hover {
-    background-color: #0056b3;
-}
-
-#inventory-list .item {
-    background-color: #007bff;
-    color: #fff;
-}
-
-#app button {
-    margin-top: 20px;
+button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-#app button:hover {
+button:hover {
     background-color: #0056b3;
 }
 
-#app button:active {
+button:active {
     transform: scale(0.98);
-}
-
-#app #reset-tasks:hover, #app #clear-inventory:hover {
-    background-color: rgb(210, 12, 12);
-    transition: background-color 0.3s ease;
 }
 
 /* Animation for background */
