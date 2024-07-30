@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameUP - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" type="image/png" href="icon.png"
 </head>
 <body>
     <div id="app">
@@ -12,12 +14,12 @@
         <div id="coins">Coins: 0</div>
         <div id="task-input">
             <input type="text" id="new-task" placeholder="Add a new task">
-            <select id="difficulty">
+            <select id="task-difficulty">
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
             </select>
-            <button onclick="addTask()">Add Task</button>
+            <button id="add-task" onclick="addTask()">Add Task</button>
         </div>
         <ul id="task-list"></ul>
         <button id="reset-tasks" onclick="resetTasks()">Reset Tasks</button>
