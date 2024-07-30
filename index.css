@@ -7,32 +7,64 @@
 #task-input {
     margin-bottom: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+
+#task-input input,
+#task-input select,
+#task-input button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    font-size: 16px; /* Consistent font size */
 }
 
 #task-input input {
-    padding: 10px;
-    width: calc(100% - 140px);
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    width: calc(100% - 140px); /* Adjust width to account for padding and margin */
 }
 
 #task-input select {
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    width: calc(50% - 20px); /* Adjust width for selector */
 }
 
 #task-input button {
-    padding: 10px;
-    width: calc(100% - 400px);
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
+
+#task-input button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the select box to be consistent across browsers */
+#task-input select {
+    appearance: none; /* Remove default styling */
+    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
+    -moz-appearance: none; /* Remove default styling in Firefox */
+    background-color: #fff; /* Match background color */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z" fill="none" stroke="%23666" stroke-width="2"/></svg>'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Position custom arrow */
+    background-size: 20px; /* Size of the custom arrow */
+}
+
+/* Reset input and button styles to ensure consistency */
+input[type="text"],
+button {
+    font-family: inherit; /* Ensure consistent font family */
+    font-size: inherit; /* Ensure consistent font size */
+    line-height: 1.5; /* Ensure consistent line height */
+}
+
+/* Task list styles */
 #task-list {
     list-style: none;
     padding: 0;
@@ -67,4 +99,35 @@
 
 #app #reset-tasks:hover {
     background-color: rgb(210, 12, 12);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #task-input {
+        flex-direction: column;
+    }
+    
+    #task-input input, 
+    #task-input select, 
+    #task-input button {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #task-input select {
+        width: 100%; /* Adjust to fit full width on smaller screens */
+    }
+    
+    #task-input button {
+        margin-bottom: 0; /* Remove extra margin if needed */
+    }
+}
+
+@media (max-width: 480px) {
+    #task-input input, 
+    #task-input select, 
+    #task-input button {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
 }
